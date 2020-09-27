@@ -1,0 +1,76 @@
+Ans1)
+a)-->
+<?php
+
+          $host="xxxxxxxxxxx"; 
+    $port = xxxxxxxxxx; // open a client connection 
+    $fp = fsockopen ($host, $port, $errno, $errstr); 
+    if (!$fp) { 
+    $result = "Error: could not open socket connection"; 
+    } 
+    else { // get the welcome message fgets ($fp, 1024); // write the user string to the socket 
+    fputs($fp, $message); // get the result $result .= fgets ($fp, 1024); // close the connection
+    fputs ($fp, "END");
+    fclose ($fp); // trim the result and remove the starting ?
+    $result = trim($result);
+    $result = substr($result, 2); // now print it to the browser 
+    } ?> 
+    Server said: <? echo $result; ?>
+?>
+
+Ans 1
+-b)
+exec('ssh username@ip');
+
+Ans 1
+c) We can check disk usage by df command.
+
+Ans 1
+d)You can use the command “df -i” to check the Inode utilization of your server.
+
+Ans 1
+e) The scandir() function in PHP is an inbuilt function which is used to return an array of files and directories of the specified directory. 
+
+Ans 1
+f) Copy Files to the remote server using SCP
+scp filename user@serverIp:/path/to/the/directory/
+
+Using FTP -->
+
+    <?php
+        set_time_limit(0);
+        require 'ftp.php';
+
+
+        $ftp = new ftp();
+        $ftp->conn('host', 'username', 'password');
+        $ftp->get('download/demo', '/demo'); // download live "/demo" folder to local "download/demo"
+
+        $ftp->put('/demo/test', 'upload/vjtest'); // upload local "upload/vjtest" to live "/demo/test"
+
+        $arr = $ftp->getLogData();
+        if ($arr['error'] != "")
+            echo '<h2>Error:</h2>' . implode('<br />', $arr['error']);
+        if ($arr['ok'] != "")
+            echo '<h2>Success:</h2>' . implode('<br />', $arr['ok']);
+    ?>
+
+Ans 3->
+
+#!/bin/bash
+check=`uptime | sed 's/\./ /' | awk '{print $10}'`
+
+if [ $check -gt 5 ]
+then
+        /etc/init.d/httpd restart
+fi
+
+Ans 4->
+We can monitor server performance by top, htop command.
+htop command give us load average, cpu usage, and which poocess takes too much memory also.
+
+Ans 5->
+CREATE VIEW view_name AS
+SELECT column1, column2
+FROM table_name
+WHERE condition;
